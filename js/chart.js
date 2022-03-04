@@ -9,14 +9,16 @@ let datasets = ['mental','physical'];
 
 
 
-// let storeData = function () {
+// let storeData = function () 
 //     const imageJSON = JSON.stringify(Product.productArray);
 
-let mentalChartData = NaN;
+let mentalChartData = 0;
 
 function calcMentalChartData() {
     for (let i = 0; i < mentalCards.length; i++) {
+        console.log(mentalCards, i)
         for (let j = 0; j < selfEsteemDeck.length; j++) {
+            console.log(selfEsteemDeck, j)
             mentalChartData += mentalCards[i][j].completed;
 
         }
@@ -24,13 +26,16 @@ function calcMentalChartData() {
     }
 
 }
-let physicalChartData = NaN;
-
+let physicalChartData = 0;
+console.log ("physicalcards",physicalCards );
 function calcPhysicalChartData() {
 
     for (let i = 0; i < physicalCards.length; i++) {
         for (let j = 0; j < nutritionDeck.length; j++) {
-            physicalChartData += physicalCards[i][j].completed
+            physicalChartData += physicalCards[i][j].completed;
+            // console.log(physicalCards[i][j].completed)
+            console.log(typeof physicalChartData)
+            
         }
 
     }
@@ -51,7 +56,9 @@ function parseData() {
 }
 parseData();
 calcMentalChartData();
+console.log(mentalChartData);
 calcPhysicalChartData();
+console.log(physicalChartData);
 
 const ctx = document.getElementById('myChart').getContext('2d');
 const imageChart = new Chart(ctx, {
@@ -62,30 +69,32 @@ const imageChart = new Chart(ctx, {
     data: {
         labels: datasets,
         datasets: [{
-            label: 'mental',
+            label: ['mental tasks completed'],
             borderColor: '#F2C078',
             backgroundColor: '#345995',
             hoverBackgroundColor: '#F2C078',
-            data: mentalChartData
+            data: [mentalChartData],
+            // data:[1,4,3,1,4]
         }, {
-            label: 'physical',
+            label: ['physical tasks completed'],
             borderColor: '#F2C078',
             backgroundColor: '#CA1551',
             hoverBackgroundColor: '#3A2E39',
-            data: physicalChartData
+            data: [physicalChartData],
+            // data: [2,1,2,3,4]
         }]
-    },
+    }, 
 
     options: {
         scales: {
-            yAxis: [{
+            yAxis: {
                 ticks: {
                     beginAtZero: true
                 },
-                stacked: true
-            }],
-            xAxis: [{
-            }]
+                // stacked: true
+            },
+            xAxis: {
+            }
         }
     }
 })

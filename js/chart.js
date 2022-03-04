@@ -58,24 +58,24 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Tasks Comitted/Completed'],
+    labels: ['Tasks Comitted or Completed'],
     datasets: [{
       label: 'Physical',
       data: [physicalChartData],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.3)'
+        'rgba(255,199,153,0.5)'
       ],
       borderColor: [
-        'rgba(255, 99, 132, 1)'
+        'rgb(255,199,153)'
       ],
-      borderWidth: 1
+      borderWidth: 2
     },
     {
       label: 'Mental',
       data: [mentalChartData],
-      backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-      borderColor: ['rgba(54, 162, 235, 1)'],
-      borderWidth: 1
+      backgroundColor: ['rgba(196,191,231,0.5)'],
+      borderColor: ['rgb(196,191,231)'],
+      borderWidth: 2
     }]
   },
   options: {
